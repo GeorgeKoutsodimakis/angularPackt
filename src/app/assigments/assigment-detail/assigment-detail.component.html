@@ -1,0 +1,9 @@
+<div class="container" *ngIf="passedAssignment">
+  <mat-card>
+    <mat-card-title>
+      {{ passedAssignment.name }}
+    </mat-card-title>
+    <mat-card-subtitle>{{passedAssignment.dueDate | date}}</mat-card-subtitle>
+    <mat-checkbox (click)="onAssigmentSubmitted()" *ngIf="passedAssignment.submitted === false">check as submitted</mat-checkbox>
+  </mat-card>
+</div>

@@ -1,0 +1,27 @@
+<form ngForm #assigmentForm class="form">
+  <mat-form-field>
+    <input matInput #assigmentName [(ngModel)]="name" name="name" />
+  </mat-form-field>
+
+  <mat-form-field>
+    <input
+      matInput
+      [matDatepicker]="myDatepicker"
+      [(ngModel)]="dueDate"
+      name="dueDate"
+      placeholder="Datepicker"
+    />
+    <mat-datepicker-toggle
+      matSuffix
+      [for]="myDatepicker"
+    ></mat-datepicker-toggle>
+    <mat-datepicker #myDatepicker></mat-datepicker>
+  </mat-form-field>
+  <button
+    mat-raised-button
+    (click)="onSubmit(assigmentName.value); assigmentForm.reset()"
+    color="primary"
+  >
+    Add Assignment
+  </button>
+</form>
