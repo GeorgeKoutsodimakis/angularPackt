@@ -1,38 +1,36 @@
-import { AssigmentDetailComponent } from './assigment-detail/assigment-detail.component';
-import { MatDatepickerModule } from '@angular/material';
-import { Component, OnInit } from '@angular/core';
-import { Assignment } from '../model/Assigment.model';
+import { AssigmentsService } from "./../shared/assigments.service";
+import { AssigmentDetailComponent } from "./assigment-detail/assigment-detail.component";
+import { MatDatepickerModule } from "@angular/material";
+import { Component, OnInit } from "@angular/core";
+import { Assignment } from "../model/Assigment.model";
 
 @Component({
-  selector: 'app-assigments',
-  templateUrl: './assigments.component.html',
-  styleUrls: ['./assigments.component.css']
+  selector: "app-assigments",
+  templateUrl: "./assigments.component.html",
+  styleUrls: ["./assigments.component.css"]
 })
 export class AssigmentsComponent implements OnInit {
-  title = 'assigment works';
+  title = "assigment works";
 
   formVisible = false;
 
   name: string;
   dueDate: Date;
   selectedAssignment: Assignment;
+  assigments: Assignment[];
 
-  assigments = [
-    {
-      name: 'One',
-      dueDate: new Date('2018-01-01'),
-      submitted: true
-    },
-    {
-      name: 'Two',
-      dueDate: new Date('2019-01-01'),
-      submitted: false
-    }
-  ];
-  constructor() {}
+  constructor(private assigmentsService: AssigmentsService) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    // this.assigments = this.assigmentsService.getAssigments();
+    this.getAssigments();
+  }
 
+  getAssigments() {
+    this.assigmentsService
+      .getAssigments()
+      .subscribe(assigments => (this.assigments = assigments));
+  }
   setSelected(assignment: Assignment) {
     this.selectedAssignment = assignment;
   }
@@ -43,7 +41,9 @@ export class AssigmentsComponent implements OnInit {
   }
 
   onNewAssigment(event: Assignment) {
-    this.assigments.push(event);
+    this.assigmentsService
+      .addAssigments(event)
+      .subscribe(success => console.log(success));
     this.formVisible = false;
     console.log(this.assigments);
   }
