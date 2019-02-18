@@ -5,3 +5,16 @@
   flex-direction: column;
 
 }
+
+.container{
+  margin-top: 1em;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.right{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}

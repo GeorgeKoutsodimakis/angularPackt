@@ -41,7 +41,7 @@ export class AssigmentsComponent implements OnInit {
     this.selectedAssignment = null;
   }
 
-  
+
   // onNewAssigment(event: Assignment) {
   //   this.assigmentsService
   //     .addAssigments(event)

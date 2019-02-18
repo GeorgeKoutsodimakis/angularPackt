@@ -3,6 +3,6 @@
   font-family: "Andale Mono", sans-serif;
 }
 
-a{
+a, nav, h1{
   text-decoration: none;
 }

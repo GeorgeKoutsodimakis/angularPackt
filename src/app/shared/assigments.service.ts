@@ -9,11 +9,13 @@ import { Observable, of } from 'rxjs';
 export class AssigmentsService {
   assigments = [
     {
+      id: 1,
       name: 'One',
       dueDate: new Date('2018-01-01'),
       submitted: true
     },
     {
+      id: 2,
       name: 'Two',
       dueDate: new Date('2019-01-01'),
       submitted: false
@@ -49,5 +51,9 @@ export class AssigmentsService {
     });
     this.loggingService.log(deletedAssigment.name, 'deleted');
     return of('successfully deleted');
+  }
+
+  getAssigmentById(id: number): Observable<Assignment> {
+    return of(this.assigments.find(x => x.id === id));
   }
 }
