@@ -1,3 +1,4 @@
+import { LoggingService } from './logging.service';
 import { Injectable } from '@angular/core';
 import { Assignment } from '../model/Assigment.model';
 import { Observable, of } from 'rxjs';
@@ -18,7 +19,7 @@ export class AssigmentsService {
       submitted: false
     }
   ];
-  constructor() {}
+  constructor(private loggingService: LoggingService) {}
 
   getAssigments(): Observable<Assignment[]> {
     return of(this.assigments);
@@ -26,7 +27,7 @@ export class AssigmentsService {
 
   addAssigments(assigment: Assignment): Observable<string> {
     this.assigments.push(assigment);
-
+    this.loggingService.log(assigment.name, 'added');
     return of('assigment added');
   }
 
@@ -36,6 +37,7 @@ export class AssigmentsService {
         this.assigments[i] = assigment;
       }
     });
+    this.loggingService.log(assigment.name, 'updated');
     return of('assigment updated');
   }
 
@@ -45,6 +47,7 @@ export class AssigmentsService {
         this.assigments.splice(i, 1);
       }
     });
+    this.loggingService.log(deletedAssigment.name, 'deleted');
     return of('successfully deleted');
   }
 }
