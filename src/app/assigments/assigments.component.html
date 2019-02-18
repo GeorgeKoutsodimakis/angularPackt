@@ -4,15 +4,23 @@
  <div *ngFor= 'let assigment of assigments'
   [ngClass]='{'submitted':assigment.submitted === true , 'unsubmitted': assigment.submitted === false}'
  > -->
-<main class = 'conainer' *ngIf='formVisible === false'>
-  <button class="addBtn" mat-raised-button color='accent' (click)='onAddBtnClick()'>
+<!-- <main class = 'conainer' *ngIf='formVisible === false'>
+  <button class='addBtn' mat-raised-button color='accent' (click)='onAddBtnClick()'>
     Add Assignment
-  </button>
+  </button> -->
 
-  <mat-list *ngFor='let assigment of assigments'>
+<main class="conainer">
+  <div class="addBtn">
+    <a routerLink="/add">
+      <button mat-raised-button color="accent" (click)="onAddBtnClick()">
+        Add Assignment
+      </button>
+    </a>
+  </div>
+  <mat-list *ngFor="let assigment of assigments">
     <h3 mat-subheader>{{ assigment.dueDate | date }}</h3>
-    <mat-list-item (click)='setSelected(assigment)'>
-      <p appSubmitted *ngIf='assigment.submitted; else unsubmitted'>
+    <mat-list-item (click)="setSelected(assigment)">
+      <p appSubmitted *ngIf="assigment.submitted; else unsubmitted">
         {{ assigment.name }} has bee sumbitted
       </p>
       <ng-template #unsubmitted>
@@ -23,11 +31,11 @@
   </mat-list>
 </main>
 
-<app-add-assignment
+<!-- <app-add-assignment
   *ngIf='formVisible'
   (newAssignment)='onNewAssigment($event)'
-></app-add-assignment>
+></app-add-assignment> -->
 
 <app-assigment-detail
-  [passedAssignment]='selectedAssignment'
+  [passedAssignment]="selectedAssignment"
 ></app-assigment-detail>

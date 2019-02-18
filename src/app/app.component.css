@@ -1,1 +1,8 @@
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
+*{
+  font-family: "Andale Mono", sans-serif;
+}
+
+a{
+  text-decoration: none;
+}

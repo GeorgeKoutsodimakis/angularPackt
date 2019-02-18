@@ -24,6 +24,13 @@ import { AddAssignmentComponent } from './assigments/add-assignment/add-assignme
 
 import { AssigmentsService } from './shared/assigments.service';
 
+import { Routes, RouterModule } from '@angular/router';
+
+const routes: Routes = [
+  { path: '', component: AssigmentsComponent },
+  { path: 'home', component: AssigmentsComponent },
+  { path: 'add', component: AddAssignmentComponent }
+];
 @NgModule({
   declarations: [
     AppComponent,
@@ -44,7 +51,8 @@ import { AssigmentsService } from './shared/assigments.service';
     MatNativeDateModule,
     MatListModule,
     MatCardModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    RouterModule.forRoot(routes)
   ],
   providers: [AssigmentsService],
   bootstrap: [AppComponent]
