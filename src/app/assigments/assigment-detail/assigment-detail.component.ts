@@ -1,17 +1,19 @@
-import { ActivatedRoute, Router } from '@angular/router';
-import { AssigmentsService } from './../../shared/assigments.service';
-import { Assignment } from './../../model/Assigment.model';
-import { Component, OnInit } from '@angular/core';
+import { AuthService } from "./../../shared/auth.service";
+import { ActivatedRoute, Router } from "@angular/router";
+import { AssigmentsService } from "./../../shared/assigments.service";
+import { Assignment } from "./../../model/Assigment.model";
+import { Component, OnInit } from "@angular/core";
 
 @Component({
-  selector: 'app-assigment-detail',
-  templateUrl: './assigment-detail.component.html',
-  styleUrls: ['./assigment-detail.component.css']
+  selector: "app-assigment-detail",
+  templateUrl: "./assigment-detail.component.html",
+  styleUrls: ["./assigment-detail.component.css"]
 })
 export class AssigmentDetailComponent implements OnInit {
   passedAssignment: Assignment;
 
   constructor(
+    private authService: AuthService,
     private assigmentsService: AssigmentsService,
     private route: ActivatedRoute,
     private router: Router
@@ -33,7 +35,7 @@ export class AssigmentDetailComponent implements OnInit {
       .deleteAssigment(this.passedAssignment)
       .subscribe(res => console.log(res));
     // this.passedAssignment = null;
-    this.router.navigate(['/']);
+    this.router.navigate(["/home"]);
   }
 
   getAssigmentById() {
@@ -44,9 +46,11 @@ export class AssigmentDetailComponent implements OnInit {
   }
 
   onClickEdit() {
-    this.router.navigate(['/assignment', this.passedAssignment.id, 'edit'], {
-      queryParams: { name: this.passedAssignment.name },
-      fragment: 'editing'
-    });
+    this.router.navigate(['/assignment', this.passedAssignment.id, 'edit'],
+      {queryParams: {name: this.passedAssignment.name}, fragment: 'editing'});
+  }
+
+  isAdmin(): boolean {
+    return this.authService.loggedIn;
   }
 }

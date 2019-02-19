@@ -16,7 +16,8 @@ import {
   MatNativeDateModule,
   MatListModule,
   MatCardModule,
-  MatCheckboxModule
+  MatCheckboxModule,
+  MatSlideToggleModule
 } from '@angular/material';
 import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -61,6 +62,7 @@ const routes: Routes = [
     MatListModule,
     MatCardModule,
     MatCheckboxModule,
+    MatSlideToggleModule,
     RouterModule.forRoot(routes)
   ],
   providers: [AssigmentsService],

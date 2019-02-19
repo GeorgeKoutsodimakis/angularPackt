@@ -1,11 +1,11 @@
-import { Injectable } from '@angular/core';
+import { Injectable } from "@angular/core";
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: "root"
 })
 export class AuthService {
   loggedIn = false;
-  logiIn() {
+  logIn() {
     this.loggedIn = true;
   }
 
@@ -13,10 +13,13 @@ export class AuthService {
     this.loggedIn = false;
   }
 
+
   isAdmin() {
-    const isUserAdmin = new Promise((resolve, reject) => {
-      resolve(this.loggedIn);
-    });
+    const isUserAdmin = new Promise(
+      (resolve) => {
+        resolve(this.loggedIn);
+      }
+    );
     return isUserAdmin;
   }
 }

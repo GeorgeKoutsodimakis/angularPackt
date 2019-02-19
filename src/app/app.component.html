@@ -1,12 +1,14 @@
 <!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
+<div class="container">
   <h1>
     <nav>
-      <a routerLink="/home">
-        {{ appName }}
-      </a>
+      <a routerLink="/home">{{ appName }}</a>
     </nav>
   </h1>
-  <!--<app-assigments> </app-assigments> -->
+
+  <mat-slide-toggle color='primary' (clcik)="login()">Login </mat-slide-toggle>
   <router-outlet></router-outlet>
+
 </div>
+
+  <!--<app-assigments> </app-assigments> -->

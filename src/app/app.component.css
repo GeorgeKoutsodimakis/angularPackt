@@ -6,3 +6,11 @@
 a, nav, h1{
   text-decoration: none;
 }
+
+.container{
+  text-align: center;
+}
+
+.slider-toggle{
+  color: 'primary'
+}

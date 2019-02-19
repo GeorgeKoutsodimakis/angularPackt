@@ -10,13 +10,18 @@
         *ngIf="passedAssignment.submitted === false"
         >check as submitted</mat-checkbox
       >
-      <nav>
-        <a [routerLink]="['/assignment', 1,'edit']">
-          <button mat-raised-button color="primary"  (click)="onClickEdit()" #edit>Edit</button>
-        </a>
-      </nav>
-      <button mat-raised-button color="warn" (click)="onDelete()" #delete>
-        delete
+      <button
+        mat-stroked-button
+        color="primary"
+        (click)="onClickEdit()"
+        [disabled]="!isAdmin()"
+        #edit
+      >
+        Edit
+      </button>
+
+      <button mat-flat-button color="warn" #delete (click)="onDelete()">
+        DELETE
       </button>
     </div>
   </mat-card>
