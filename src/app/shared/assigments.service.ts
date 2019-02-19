@@ -2,13 +2,20 @@ import { LoggingService } from "./logging.service";
 import { Injectable } from "@angular/core";
 import { Assignment } from "../model/Assigment.model";
 import { Observable, of, from } from "rxjs";
-import { HttpClient } from "@angular/common/http"
+import { HttpClient, HttpHeaders } from "@angular/common/http"
 import { map } from "rxjs/internal/operators"
+
 
 @Injectable({
   providedIn: "root"
 })
 export class AssigmentsService {
+  private httpOptions = {
+  headers: new HttpHeaders({
+    'Content-Type' : 'application/json'
+  })
+}
+
   assigments : Assignment[] = [
     {
       id: 1,
@@ -37,7 +44,7 @@ export class AssigmentsService {
     // this.assigments.push(assignment);
     // this.loggingService.log(assignment.name, "added");
     // return of("assigment added");
-    return this.httpClient.post<Assignment>(this.urlOne, assignment);
+    return this.httpClient.post<Assignment>(this.urlOne, assignment, this.httpOptions);
   }
 
   updateAssigments(assigment: Assignment): Observable<any> {
