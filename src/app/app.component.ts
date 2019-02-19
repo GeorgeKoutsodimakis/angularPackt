@@ -15,9 +15,14 @@ export class AppComponent {
   login(){
     if(this.authService.loggedIn === false){
       this.authService.logIn();
+      console.log(this.authService.logIn);
     }else{
       this.authService.logOut();
       this.router.navigate(['/home']);
+      console.log(this.authService.logOut);
+
     }
   }
+
+
 }
