@@ -1,3 +1,4 @@
+import { AuthGuard } from './shared/auth.guard';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
@@ -32,7 +33,11 @@ const routes: Routes = [
   { path: 'home', component: AssigmentsComponent },
   { path: 'add', component: AddAssignmentComponent },
   { path: 'assigment/:id', component: AssigmentDetailComponent },
-  { path: 'assigment/:id/edit', component: EditAssigmentComponent }
+  {
+    path: 'assigment/:id/edit',
+    canActivate: [AuthGuard],
+    component: EditAssigmentComponent
+  }
 ];
 @NgModule({
   declarations: [
