@@ -28,6 +28,7 @@ import { AssigmentsService } from './shared/assigments.service';
 
 import { Routes, RouterModule } from '@angular/router';
 import { EditAssigmentComponent } from './edit-assigment/edit-assigment.component';
+import { HttpClientModule } from '@angular/common/http';
 
 const routes: Routes = [
   { path: '', component: AssigmentsComponent },
@@ -63,6 +64,7 @@ const routes: Routes = [
     MatCardModule,
     MatCheckboxModule,
     MatSlideToggleModule,
+    HttpClientModule,
     RouterModule.forRoot(routes)
   ],
   providers: [AssigmentsService],

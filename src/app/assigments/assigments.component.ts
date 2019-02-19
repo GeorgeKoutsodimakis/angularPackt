@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { AssigmentsService } from "./../shared/assigments.service";
 import { AssigmentDetailComponent } from "./assigment-detail/assigment-detail.component";
 import { MatDatepickerModule } from "@angular/material";
@@ -19,7 +20,7 @@ export class AssigmentsComponent implements OnInit {
   selectedAssignment: Assignment;
   assigments: Assignment[];
 
-  constructor(private assigmentsService: AssigmentsService) {}
+  constructor(private assigmentsService: AssigmentsService,private router: Router) {}
 
   ngOnInit() {
     // this.assigments = this.assigmentsService.getAssigments();
@@ -32,7 +33,9 @@ export class AssigmentsComponent implements OnInit {
       .subscribe(assigments => (this.assigments = assigments));
   }
   setSelected(assignment: Assignment) {
-    this.selectedAssignment = assignment;
+    // this.selectedAssignment = assignment;
+    this.router.navigate(['assignment/'+ assignment.id]);
+
   }
 
   onAddBtnClick() {

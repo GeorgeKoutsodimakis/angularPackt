@@ -33,9 +33,9 @@ export class AssigmentDetailComponent implements OnInit {
   onDelete() {
     this.assigmentsService
       .deleteAssigment(this.passedAssignment)
-      .subscribe(res => console.log(res));
+      .subscribe(res =>     this.router.navigate(["/home"]));
     // this.passedAssignment = null;
-    this.router.navigate(["/home"]);
+    // this.router.navigate(["/home"]);
   }
 
   getAssigmentById() {
